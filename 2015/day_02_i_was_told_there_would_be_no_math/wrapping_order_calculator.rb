@@ -9,6 +9,8 @@ class WrappingOrderCalculator
     surface_area_of_the_box + spare
   end
 
+  private
+
   def surface_area_of_the_box
     2 * (@length*@width + @width*@height + @height*@length)
   end
