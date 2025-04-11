@@ -5,7 +5,7 @@ class WrappingOrderCalculator
     @height = height
   end
 
-  def wrapping_paper_to_order
+  def order
     surface_area_of_the_box + spare
   end
 
