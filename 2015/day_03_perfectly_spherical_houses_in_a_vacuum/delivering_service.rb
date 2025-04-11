@@ -9,8 +9,8 @@ class DeliveringService
     @x, @y = @position
   end
 
-  def number_of_houses_visited
-    @directions.chars.each do |direction|
+  def houses_visited
+    @directions.each do |direction|
       case direction
       when '>'
         @x += 1
@@ -35,6 +35,10 @@ class DeliveringService
       end
     end
 
-    @map.keys.count
+    @map
+  end
+
+  def number_of_houses_visited
+    houses_visited.keys.count
   end
 end
