@@ -1,5 +1,5 @@
 class StringChecker
-  FORBIDDEN_STRINGS = ['ab', 'cd', 'pq', 'xy']
+  FORBIDDEN_STRINGS = /ab|cd|pq|xy/
   VOWELS = /[aeiou]/
 
   def initialize(string)
@@ -19,10 +19,10 @@ class StringChecker
   end
 
   def contains_at_least_one_letter_twice_in_a_row?
-    @string.chars.each_cons(2).any? { |substring| substring.uniq.count == 1 }
+    @string =~ /(.)\1/
   end
 
   def does_not_contain_forbidden_strings?
-    @string.chars.each_cons(2).none? { |substring| FORBIDDEN_STRINGS.include?(substring.join) }
+    @string !~ FORBIDDEN_STRINGS
   end
 end
