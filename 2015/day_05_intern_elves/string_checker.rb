@@ -41,6 +41,6 @@ class StringChecker
   end
 
   def contains_one_repeating_letter_with_letter_between?
-    !!(@string =~ /(.).\1/)
+    @string =~ /(.).\1/
   end
 end
