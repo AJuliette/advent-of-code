@@ -26,4 +26,26 @@ class StringCheckertTest < Minitest::Test
     string = 'dvszwmarrgswjxmb'
     refute StringChecker.new(string).is_nice?
   end
+
+  # NEW RULES
+
+  def test_nice_string_new_rules_qjhvhtzxzqqjkmpb
+    string = 'qjhvhtzxzqqjkmpb'
+    assert StringChecker.new(string, new_rules: true).is_nice?
+  end
+
+  def test_nice_string_new_rules_xxyxx
+    string = 'xxyxx'
+    assert StringChecker.new(string, new_rules: true).is_nice?
+  end
+
+  def test_naughty_string_new_rules_uurcxstgmygtbstg
+    string = 'uurcxstgmygtbstg'
+    refute StringChecker.new(string, new_rules: true).is_nice?
+  end
+
+  def test_naughty_string_new_rules_ieodomkazucvgmuy
+    string = 'ieodomkazucvgmuy'
+    refute StringChecker.new(string, new_rules: true).is_nice?
+  end
 end
