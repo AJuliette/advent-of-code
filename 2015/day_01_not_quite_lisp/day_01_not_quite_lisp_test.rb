@@ -7,56 +7,56 @@ class NotQuitLispTest < Minitest::Test
   # PART ONE
 
   def test_floor_0
-    assert_equal 0, NotQuitLisp.part_one("(())")
+    assert_equal 0, NotQuitLisp.calculate_floor("(())")
   end
 
   def test_another_floor_0
-    assert_equal 0, NotQuitLisp.part_one("()()")
+    assert_equal 0, NotQuitLisp.calculate_floor("()()")
   end
 
   def test_floor_3
-    assert_equal 3, NotQuitLisp.part_one("(((")
+    assert_equal 3, NotQuitLisp.calculate_floor("(((")
   end
 
   def test_another_floor_3
-    assert_equal 3, NotQuitLisp.part_one("(((")
+    assert_equal 3, NotQuitLisp.calculate_floor("(((")
   end
 
   def test_another_another_floor_3
-    assert_equal 3, NotQuitLisp.part_one("))(((((")
+    assert_equal 3, NotQuitLisp.calculate_floor("))(((((")
   end
 
   def test_floor_minus_1
-    assert_equal (-1), NotQuitLisp.part_one("())")
+    assert_equal (-1), NotQuitLisp.calculate_floor("())")
   end
 
   def test_another_minus_1
-    assert_equal (-1), NotQuitLisp.part_one("))(")
+    assert_equal (-1), NotQuitLisp.calculate_floor("))(")
   end
 
   def test_floor_minus_3
-    assert_equal (-3), NotQuitLisp.part_one(")))")
+    assert_equal (-3), NotQuitLisp.calculate_floor(")))")
   end
 
   def test_another_minus_3
-    assert_equal (-3), NotQuitLisp.part_one(")())())")
+    assert_equal (-3), NotQuitLisp.calculate_floor(")())())")
   end
 
-  def test_final_part_one
-    assert_equal (280), NotQuitLisp.part_one(INSTRUCTION)
+  def test_final_calculate_floor
+    assert_equal (280), NotQuitLisp.calculate_floor(INSTRUCTION)
   end
 
   # PART TWO
 
   def test_position_1
-    assert_equal 1, NotQuitLisp.part_two(")")
+    assert_equal 1, NotQuitLisp.first_basement_position(")")
   end
 
   def test_position_5
-    assert_equal 5, NotQuitLisp.part_two("()())")
+    assert_equal 5, NotQuitLisp.first_basement_position("()())")
   end
 
   def test_final_part_two
-    assert_equal (1797), NotQuitLisp.part_two(INSTRUCTION)
+    assert_equal (1797), NotQuitLisp.first_basement_position(INSTRUCTION)
   end
 end

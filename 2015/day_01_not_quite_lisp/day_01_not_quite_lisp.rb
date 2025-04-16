@@ -1,13 +1,16 @@
 class NotQuitLisp
-  def self.part_one(instruction)
+  def self.calculate_floor(instructions)
+    instructions.chars.sum { |instruction| instruction == '(' ? 1 : -1 }
+  end
+
+  def self.first_basement_position(instructions)
     floor = 0
-    instruction.each_char do |char|
-      if char == '('
-        floor += 1
-      elsif char == ')'
-        floor -= 1
-      end
+  
+    instructions.chars.each_with_index do |char, index|
+      floor += (char == '(' ? 1 : -1)
+      return index + 1 if floor == -1
     end
-    floor
+  
+    nil
   end
 end
