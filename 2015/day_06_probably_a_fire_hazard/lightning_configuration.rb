@@ -1,7 +1,7 @@
 class LightningConfiguration
   def initialize(instructions)
     @instructions = prepare_instructions(instructions)
-    @grid = grid
+    @grid = create_empty_grid
   end
 
   def execute_instructions
@@ -17,10 +17,8 @@ class LightningConfiguration
 
   private
 
-  def grid
-    (0..999).each_with_object([]) do |row_index, array|
-      array.push((0..999).to_a.map { |column_index| 0 })
-    end
+  def create_empty_grid
+    Array.new(1000) { Array.new(1000, 0) }
   end
 
   def prepare_instructions(instructions)
@@ -35,8 +33,6 @@ class LightningConfiguration
     x_start, y_start = coordinates_start
     x_end, y_end = coordinates_end
     (x_start..x_end).each do |index_row|
-      if y_start.nil? || y_end.nil?
-      end
       (y_start..y_end).each do |index_column| 
         case order
         when 'toggle' then toggle(index_row, index_column)
@@ -52,7 +48,7 @@ class LightningConfiguration
   end
 
   def turn_off(index_row, index_column)
-    (@grid[index_row][index_column] -= 1) if @grid[index_row][index_column] > 0
+    [@grid[index_row][index_column] - 1, 0].max
   end
 
   def turn_on(index_row, index_column)
