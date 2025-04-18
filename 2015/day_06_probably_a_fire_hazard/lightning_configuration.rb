@@ -12,14 +12,14 @@ class LightningConfiguration
   end
 
   def number_of_lights_lit
-    @grid.flatten.sum { |bulb| bulb == true ? 1 : 0 }
+    @grid.flatten.sum
   end
 
   private
 
   def grid
     (0..999).each_with_object([]) do |row_index, array|
-      array.push((0..999).to_a.map { |column_index| false })
+      array.push((0..999).to_a.map { |column_index| 0 })
     end
   end
 
@@ -48,14 +48,14 @@ class LightningConfiguration
   end
 
   def toggle(index_row, index_column)
-    @grid[index_row][index_column] = !@grid[index_row][index_column]
+    @grid[index_row][index_column] += 2
   end
 
   def turn_off(index_row, index_column)
-    (@grid[index_row][index_column] = !@grid[index_row][index_column]) if @grid[index_row][index_column] == true 
+    (@grid[index_row][index_column] -= 1) if @grid[index_row][index_column] > 0
   end
 
   def turn_on(index_row, index_column)
-    (@grid[index_row][index_column] = !@grid[index_row][index_column]) if @grid[index_row][index_column] == false 
+    @grid[index_row][index_column] += 1
   end
 end
